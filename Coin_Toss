@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coin Toss</title>
+    <style>
+        #bt{
+            background: green;
+            color:white;
+            border: 2px solid #ccc;
+            width: 110px;
+            height: 40px;
+            font-size: large;
+        }
+        #val{
+            width: 150px;
+            height: 40px;
+
+        }
+    </style>
+</head>
+<body>
+   <center>
+     <h1>Coin Toss Guessing Game</h1>
+   <h1 >🪙Enter your guess(head or tail)<br><br> </h1>
+   <h1 id="res4"></h1>
+     <p>Plz use lowercase</p>
+     <input type="text" id="val"><br><br><br>
+      <button id="bt" onclick="coin()">Toss Coin</button>  <br><br> 
+    <div id="res1"></div>
+    <div id="res2"></div>
+    <div id="res3"></div>
+     
+    <script>
+         let success=0;
+         let round=0;
+        function coin()
+        {
+           var result1=document.getElementById("res1");
+            var result2=document.getElementById("res2");
+             var result3=document.getElementById("res3");
+             var result4=document.getElementById("res4");
+            var guess=document.getElementById("val").value;
+            result3.innerHTML="";
+            let y;
+            let x=Math.random()
+            if(x<0.5)
+           { 
+              y="head";
+            }
+            else{
+                y="tail";
+            }
+            if(guess!="head" && guess!="tail")
+            {
+               
+                  result3.innerHTML="❌Plz enter head or tail";
+            }
+          if(y=="head" && guess=="head")
+          {
+               round++;
+               success++;
+               result4.innerHTML="HEAD";
+                 result1.innerHTML="No of rounds played :" +round;
+            result2.innerHTML="No of successful predictions : "+success;  
+          }
+           if(y=="head" && guess=="tail")
+          {
+               round++;
+               result4.innerHTML="HEAD";
+                 result1.innerHTML="No of rounds played :" +round;
+            result2.innerHTML="No of successful predictions : "+success;  
+              
+          }
+           if(y=="tail" && guess=="tail")
+          {
+               round++;
+               success++;
+               result4.innerHTML="TAIL";
+                 result1.innerHTML="No of rounds played :" +round;
+            result2.innerHTML="No of successful predictions : "+success;  
+          }
+           if(y=="tail" && guess=="head")
+          {
+               round++;
+               result4.innerHTML="TAIL";
+                 result1.innerHTML="No of rounds played :" +round;
+            result2.innerHTML="No of successful predictions : "+success;  
+          }
+          
+        }
+
+    </script>
+   </center>
+</body>
+</html>
